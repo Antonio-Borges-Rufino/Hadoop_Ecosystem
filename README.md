@@ -24,5 +24,12 @@
       -> Seleção de programas: Instalação minima + Padrão + Ferramenta de desenvolvimento + Ferramentas de desenvolvimento RPM  
       -> Usuario root: Desabilitado  
       -> Criar usuario: Hadoop com permissão de administrador  
+5. Com a instalação feita procure o ip da máquina para poder fazer um gerenciamento com ssh  
+```
+ip addr show
+```
+6. Use o gerenciador da sua escolha para fazer o acesso com SSh
+
+# Passo 2 -> Instalando e configurando o python
       
       
