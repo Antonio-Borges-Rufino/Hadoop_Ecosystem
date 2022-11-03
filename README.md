@@ -35,6 +35,14 @@ ip addr show
 ```
 sudo yum install python3
 ```
+2. Para instalar o virtualenv:  
+```
+sudo pip3 install virtualenv
+```
+
+# Passo 3 -> Instalar e configurar o Java
+1. O java é base de funcionamento do ecossistema hadoop, por isso, vou instalar a versão mais estável dele que é a 8
+2. 
 
 
       
