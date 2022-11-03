@@ -54,7 +54,7 @@ sudo yum install java-1.8.0-openjdk
 ```
 update-alternatives --config java
 ```
-4. OBS: Guarde apenas até a versão java, nesse caso, está em /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.322.b06-11.el8.x86_64/
+4. OBS: Guarde apenas até a versão java, nesse caso, está em /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.322.b06-11.el8.x86_64/jre
 
 # Passo 4 -> Instalar o Hadoop
 1. Baixar o hadoop
@@ -78,8 +78,30 @@ tar xvzf hadoop-3.3.4.tar.gz -C hadoop_ecosystem/
 vim hadoop_ecosystem/hadoop/etc/hadoop/hadoop-env.sh
 ```
 6. Com o arquivo hadoop_ecosysten/hadoop/etc/hadoop/hadoop-env.sh aberto no vim, escreva e salve:
-      -> export JAVA_HOME =/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.322.b06-11.el8.x86_64
-7. 
+      -> export JAVA_HOME =/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.322.b06-11.el8.x86_64/jre
+7. Teste o hadoop
+```
+hadoop_ecosystem/hadoop/bin/hadoop
+```
+8. Edite hadoop_ecosystem/hadoop/etc/hadoop/core-site.xml com vim e adicione:
+```
+<configuration>
+    <property>
+        <name>fs.defaultFS</name>
+        <value>hdfs://localhost:9000</value>
+    </property>
+</configuration>
+```
+9 Edite hadoop_ecosystem/hadoop/etc/hadoop/hdfs-site.xml com vim e adicione:
+```
+<configuration>
+    <property>
+        <name>dfs.replication</name>
+        <value>1</value>
+    </property>
+</configuration>
+```
+
 
 
       
