@@ -31,5 +31,11 @@ ip addr show
 6. Use o gerenciador da sua escolha para fazer o acesso com SSh
 
 # Passo 2 -> Instalando e configurando o python
+1. Para instalar o python 3 + pip faça:  
+```
+sudo yum install python3
+```
+
+
       
       
