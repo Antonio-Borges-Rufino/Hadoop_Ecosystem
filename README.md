@@ -111,8 +111,21 @@ cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 ```
 chmod 0600 ~/.ssh/authorized_keys
 ```
-11. 
-
+11. Formatar o sistema de arquivos:
+```
+hadoop_ecosystem/hadoop/bin/hdfs namenode -format
+```
+12. Iniciar namenode:
+```
+hadoop_ecosystem/hadoop/sbin/start-dfs.sh
+```
+13. Crie pasta e usuario no hdfs:
+```
+hadoop_ecosystem/hadoop/bin/hdfs dfs -mkdir /user
+```
+```
+hadoop_ecosystem/hadoop/bin/hdfs dfs -mkdir /user/HADOOP
+```
 
       
       
