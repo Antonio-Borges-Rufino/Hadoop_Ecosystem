@@ -101,7 +101,17 @@ hadoop_ecosystem/hadoop/bin/hadoop
     </property>
 </configuration>
 ```
-
+10. O servidor não permite ssh em localhost sem senha, portanto faça:
+```
+ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
+```
+```
+cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+```
+```
+chmod 0600 ~/.ssh/authorized_keys
+```
+11. 
 
 
       
