@@ -126,6 +126,50 @@ hadoop_ecosystem/hadoop/bin/hdfs dfs -mkdir /user
 ```
 hadoop_ecosystem/hadoop/bin/hdfs dfs -mkdir /user/HADOOP
 ```
+14. Adicione em .baschrc
+```
+export PATH="$PATH:$HOME/bin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/bin" 
+export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.322.b06-11.el8.x86_64/jre/
+export HADOOP_HOME=/home/hadoop/hadoop_ecosystem/hadoop/
+export PATH=$PATH:$HADOOP_HOME
+export HADOOP_HDFS_HOME=$HADOOP_HOME
+export HADOOP_MAPRED_HOME=$HADOOP_HOME
+export YARN_HOME=$HADOOP_HOME
+export HADOOP_COMMON_HOME=$HADOOP_HOME
+export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
+export PATH=$PATH:$JAVA_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
+export HADOOP_OPTS="HADOOP_OPTS -Djava.library.path=$HADOOP_HOME/lib/native"
+```
+```
+source .baschrc
+```
+15. Edite hadoop_ecosystem/hadoop/etc/hadoop/mapred-site.xml com vim e adicione:
+```
+<configuration>
+    <property>
+        <name>mapreduce.framework.name</name>
+        <value>yarn</value>
+    </property>
+    <property>
+        <name>mapreduce.application.classpath</name>
+        <value>$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/*:$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/lib/*</value>
+    </property>
+</configuration>
+```
+16. Edite hadoop_ecosystem/hadoop/etc/hadoop/yarn-site.xml com vim e adicione:
+```
+<configuration>
+    <property>
+        <name>yarn.nodemanager.aux-services</name>
+        <value>mapreduce_shuffle</value>
+    </property>
+    <property>
+        <name>yarn.nodemanager.env-whitelist</name>
+        <value>JAVA_HOME,HADOOP_COMMON_HOME,HADOOP_HDFS_HOME,HADOOP_CONF_DIR,CLASSPATH_PREPEND_DISTCACHE,HADOOP_YARN_HOME,HADOOP_HOME,PATH,LANG,TZ,HADOOP_MAPRED_HOME</value>
+    </property>
+</configuration>
+```
+
 
       
       
