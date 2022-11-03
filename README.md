@@ -42,7 +42,44 @@ sudo pip3 install virtualenv
 
 # Passo 3 -> Instalar e configurar o Java
 1. O java é base de funcionamento do ecossistema hadoop, por isso, vou instalar a versão mais estável dele que é a 8
-2. 
+2. Para atualizar o gerenciador de pacote
+```
+sudo yum update
+```
+3. Para instalar o java 8
+```
+sudo yum install java-1.8.0-openjdk
+```
+3. Para ver onde estão os executaveis java
+```
+update-alternatives --config java
+```
+4. OBS: Guarde apenas até a versão java, nesse caso, está em /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.322.b06-11.el8.x86_64/
+
+# Passo 4 -> Instalar o Hadoop
+1. Baixar o hadoop
+```
+sudo wget https://dlcdn.apache.org/hadoop/common/hadoop-3.3.4/hadoop-3.3.4.tar.gz
+```
+2. Crie uma pasta onde os arquivos vão ficar
+``` 
+mkdir hadoop_ecosystem
+```
+3. Descompacte o arquivo
+```
+tar xvzf hadoop-3.3.4.tar.gz -C hadoop_ecosystem/
+```
+4. Mude o nome da pasta
+```
+ mv hadoop-3.3.4/ hadoop/
+```
+5. Configure o arquivo hadoop_ecosysten/hadoop/etc/hadoop/hadoop-env.sh
+```
+vim hadoop_ecosystem/hadoop/etc/hadoop/hadoop-env.sh
+```
+6. Com o arquivo hadoop_ecosysten/hadoop/etc/hadoop/hadoop-env.sh aberto no vim, escreva e salve:
+      -> export JAVA_HOME =/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.322.b06-11.el8.x86_64
+7. 
 
 
       
