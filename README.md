@@ -39,6 +39,37 @@ sudo yum install python3
 ```
 sudo pip3 install virtualenv
 ```
+3. Crie uma pasta para os projetos
+```
+virtualenv -p python3 projetos
+```
+4. Para acessar o ambiente virtual 
+```
+source projetos/bin/activate
+```
+5. Instalar a biblioteca pandas
+```
+pip3 install pandas
+```
+6. Instalar o jupyter
+```
+pip install jupyter
+```
+```
+ipython kernel install --name projetos --user
+```
+7. Para executar o jupyter e acessar ele pela máquina mãe
+```
+jupyter notebook 
+```
+8. Instalar a biblioteca para acessar o redis
+```
+pip install redis
+```
+9. Instalar a biblioteca pyspark
+```
+pip install pyspark
+```
 
 # Passo 3 -> Instalar e configurar o Java
 1. O java é base de funcionamento do ecossistema hadoop, por isso, vou instalar a versão mais estável dele que é a 8
