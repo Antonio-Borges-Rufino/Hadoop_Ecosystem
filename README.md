@@ -178,7 +178,7 @@ start-yarn.sh
 ```
 18. Para parar basta colocar stop no lugar do start
 
-# Passo 4 -> Instalar o zookeeper
+# Passo 5 -> Instalar o zookeeper
 1. Baixe o zookeeper
 ```
 wget https://dlcdn.apache.org/zookeeper/zookeeper-3.7.1/apache-zookeeper-3.7.1-bin.tar.gz
@@ -217,7 +217,7 @@ zkServer.sh start
 ```
 10 Para pausar basta trocar o start pelo stop
 
-# Passo 5 -> Instalando o kafka
+# Passo 6 -> Instalando o kafka
 1. Baixar o kafka
 ```
 wget https://dlcdn.apache.org/kafka/3.3.1/kafka_2.13-3.3.1.tgz
@@ -252,6 +252,5 @@ kafka-server-start.sh /home/hadoop/hadoop_ecosystem/kafka/config/server.properti
 ```
 zookeeper-server-stop.sh
 kafka-server-stop.sh
-
 ```
       
