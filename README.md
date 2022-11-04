@@ -218,6 +218,40 @@ zkServer.sh start
 10 Para pausar basta trocar o start pelo stop
 
 # Passo 5 -> Instalando o kafka
+1. Baixar o kafka
+```
+wget https://dlcdn.apache.org/kafka/3.3.1/kafka_2.13-3.3.1.tgz
+```
+2. Extraia para dentro da pasta hadoop_ecosystem
+```
+tar xvzf kafka_2.13-3.3.1.tgz -C hadoop_ecosystem/
+```
+3. Mude o nome apenas para kafka
+```
+mv hadoop_ecosystem/kafka_2.13-3.3.1/ hadoop_ecosystem/kafka
+```
+4. Edite .baschrc para adicionar a variavel de ambiente do kafka
+```
+export KAFKA_HOME=/home/hadoop/hadoop_ecosystem/kafka/
+export PATH=$PATH:$KAFKA_HOME
+export PATH=$PATH:$JAVA_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$ZOOKEPER_HOME/bin:$KAFKA_HOME/bin:KAFKA_HOME/config
+```
+5. Atualize o .baschrc
+```
+source .baschrc
+```
+6. Inicialize o zookeeper-server
+```
+zookeeper-server-start.sh /home/hadoop/hadoop_ecosystem/kafka/config/zookeeper.properties
+```
+7. Em outro terminal start o kafka
+```
+kafka-server-start.sh /home/hadoop/hadoop_ecosystem/kafka/config/server.properties
+```
+8. Para parar os processos, abre-se um novo terminal e digita os mesmos comandos mas em vez de start, coloque stop e sem os caminhos de config
+```
+zookeeper-server-stop.sh
+kafka-server-stop.sh
 
-      
+```
       
