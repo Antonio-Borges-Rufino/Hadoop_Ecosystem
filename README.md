@@ -257,4 +257,65 @@ kafka-server-stop.sh
 ```
 alias kafka_start="kafka-server-start.sh /home/hadoop/hadoop_ecosystem/kafka/config/server.properties"
 ```
+```
+source .baschrc
+```
+
+# Passo 7 -> Instalar spark
+1. Baixar o scala e instalar
+```
+curl -fL https://github.com/coursier/launchers/raw/master/cs-x86_64-pc-linux.gz | gzip -d > cs && chmod +x cs && ./cs setup
+```
+2. Baixar o spark
+```
+wget https://dlcdn.apache.org/spark/spark-3.3.1/spark-3.3.1-bin-hadoop3.tgz
+```
+3. Extrair para dentro da pasta hadoop_ecosystem
+```
+tar xvzf spark-3.3.1-bin-hadoop3.tgz -C hadoop_ecosystem/
+```
+4. Mudar o nome para apenas spark
+```
+mv hadoop_ecosystem/spark-3.3.1-bin-hadoop3/ hadoop_ecosystem/spark
+```
+5. Edite as variaveis de ambiente e adicione em .baschrc:
+```
+export SPARK_HOME=/home/hadoop/hadoop_ecosystem/spark/
+export PATH=$PATH=$SPARK_HOME
+export PATH=$PATH:$JAVA_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$ZOOKEPER_HOME/bin:$KAFKA_HOME/bin:$SPARK_HOME/bin:$SPARK_HOME/sbin
+```
+```
+source .baschrc
+```
+# Passo 7 -> Instalar o redis
+1. Baixar o redis
+```
+wget https://download.redis.io/redis-stable.tar.gz
+```
+2. Extrair o redis para a pasta hadoop_ecosystem
+```
+tar xvzf redis-stable.tar.gz -C hadoop_ecosystem/
+```
+3. Mudar de nome apenas para redis
+```
+mv hadoop_ecosystem/redis-stable/ hadoop_ecosystem/redis
+```
+4. Entrar na pasta do redis
+```
+cd hadoop_ecosystem/redis
+```
+5. Compilar o redis
+```
+make
+```
+6. Instalar o redis (ainda na mesma pasta)
+```
+make install
+```
+7. Para executar o servidor (não é preciso configurar como variavel de ambiente)
+```
+redis-server
+```
+
+
       
