@@ -70,7 +70,10 @@ pip install redis
 ```
 pip install pyspark
 ```
-
+10. Instalar o conector kafka-python
+```
+pip install kafka-python
+```
 # Passo 3 -> Instalar e configurar o Java
 1. O java é base de funcionamento do ecossistema hadoop, por isso, vou instalar a versão mais estável dele que é a 8
 2. Para atualizar o gerenciador de pacote
