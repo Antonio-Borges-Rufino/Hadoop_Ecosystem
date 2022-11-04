@@ -169,6 +169,16 @@ source .baschrc
     </property>
 </configuration>
 ```
+17. Para startar o hadoop e o yarn, respectivamente:
+```
+start-dfs.sh
+```
+```
+start-yarn.sh
+```
+18. Para parar basta colocar stop no lugar do start
+
+# Passo 4 -> Instalar o zookeper
 
 
       
