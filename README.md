@@ -287,7 +287,7 @@ export PATH=$PATH:$JAVA_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$ZOOKEPER_HO
 ```
 source .baschrc
 ```
-# Passo 7 -> Instalar o redis
+# Passo 8 -> Instalar o redis
 1. Baixar o redis
 ```
 wget https://download.redis.io/redis-stable.tar.gz
@@ -315,6 +315,10 @@ make install
 7. Para executar o servidor (não é preciso configurar como variavel de ambiente)
 ```
 redis-server
+```
+8. Para entrar na linha de comando
+```
+redis-cli
 ```
 
 
