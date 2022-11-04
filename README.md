@@ -242,7 +242,7 @@ source .baschrc
 ```
 6. Inicialize o zookeeper-server
 ```
-zookeeper-server-start.sh /home/hadoop/hadoop_ecosystem/kafka/config/zookeeper.properties
+zkServer.sh start
 ```
 7. Em outro terminal start o kafka
 ```
@@ -250,7 +250,11 @@ kafka-server-start.sh /home/hadoop/hadoop_ecosystem/kafka/config/server.properti
 ```
 8. Para parar os processos, abre-se um novo terminal e digita os mesmos comandos mas em vez de start, coloque stop e sem os caminhos de config
 ```
-zookeeper-server-stop.sh
+zkServer.sh stop
 kafka-server-stop.sh
+```
+9. Por ser um comando grande, vou criar um alias para a inicialização do servidor kafka, editando .baschrc
+```
+alias kafka_start="kafka-server-start.sh /home/hadoop/hadoop_ecosystem/kafka/config/server.properties"
 ```
       
