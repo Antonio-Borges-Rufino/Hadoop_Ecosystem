@@ -178,8 +178,46 @@ start-yarn.sh
 ```
 18. Para parar basta colocar stop no lugar do start
 
-# Passo 4 -> Instalar o zookeper
+# Passo 4 -> Instalar o zookeeper
+1. Baixe o zookeeper
+```
+wget https://dlcdn.apache.org/zookeeper/zookeeper-3.7.1/apache-zookeeper-3.7.1-bin.tar.gz
+```
+2. Extraia para dentro da pasta hadoop_ecosystem
+```
+tar xvzf apache-zookeeper-3.7.1-bin.tar.gz -C hadoop_ecosystem/
+```
+3. Mude o nome apenas para zookeeper
+```
+mv hadoop_ecosystem/apache-zookeeper-3.7.1-bin/ hadoop_ecosystem/zookeeper
+```
+4. Crie um diretorio vazio para acesso de memória do zookeeper
+```
+mkdir /home/hadoop/hadoop_ecosystem/zookeeper/dir_bd
+```
+6. crie um arquivo com vim em /home/hadoop/hadoop_ecosystem/zookeeper/conf/ com nome de zoo.cfg
+```
+vim /home/hadoop/hadoop_ecosystem/zookeeper/conf/zoo.cfg
+```
+7. Edite /home/hadoop/hadoop_ecosystem/zookeeper/conf/zoo.cfg com vim e adicione:
+```
+tickTime=2000
+dataDir=/home/hadoop/hadoop_ecosystem/zookeeper/dir_bd/
+clientPort=2181
+```
+8. Edite .baschrc para adicionar a variavel de ambiente do zookeeper
+```
+export ZOOKEPER_HOME=/home/hadoop/hadoop_ecosystem/zookeeper/
+export PATH=$PATH:$ZOOKEPER_HOME
+export PATH=$PATH:$JAVA_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$ZOOKEPER_HOME/bin
+```
+9. Para iniciar o zookeeper:
+```
+zkServer.sh start
+```
+10 Para pausar basta trocar o start pelo stop
 
+# Passo 5 -> Instalando o kafka
 
       
       
