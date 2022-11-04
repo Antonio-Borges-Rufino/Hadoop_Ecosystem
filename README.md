@@ -3,6 +3,9 @@
 2. A intenção é configurar um ecossistema baseado em hadoop para projetos de big data
 3. Cada passo vai ser feito de forma linear para facilitar a reprodção
 
+# Suporte atual do cluster
+![](https://github.com/Antonio-Borges-Rufino/Hadoop_Ecosystem/blob/main/heco.jpg)
+
 # Passo 1 -> Criação do servidor
 1. O servidor base desse projeto vai ser um centOS-8 stream, que pode ser baixado [aqui](http://isoredirect.centos.org/centos/8-stream/isos/x86_64/)
 2. O ambiente de virtualização utilizado foi o virtual-box
