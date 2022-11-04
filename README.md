@@ -320,6 +320,21 @@ redis-server
 ```
 redis-cli
 ```
+9. Para sair do redis-server apert cntrl+c, e para sair do redis-cli use exit
 
-
-      
+# ORDEM DE START
+```
+start-dfs.sh
+```
+```
+start-yarn.sh
+```
+```
+zkServer.sh start
+```
+```
+kafka_start
+```
+```
+redis-server
+```
