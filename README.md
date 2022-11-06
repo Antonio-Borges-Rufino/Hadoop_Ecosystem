@@ -370,8 +370,8 @@ start-yarn.sh
 zkServer.sh start
 ```
 ```
-kafka_start
+kafka_start > /dev/null & 
 ```
 ```
-redis-server
+redis-server > /dev/null & 
 ```
