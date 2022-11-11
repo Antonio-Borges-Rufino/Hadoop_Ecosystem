@@ -77,6 +77,10 @@ pip install pyspark
 ```
 pip install kafka-python
 ```
+11. Instalar o Flask api
+```
+pip install flask-restful
+```
 # Passo 3 -> Instalar e configurar o Java
 1. O java é base de funcionamento do ecossistema hadoop, por isso, vou instalar a versão mais estável dele que é a 8
 2. Para atualizar o gerenciador de pacote
