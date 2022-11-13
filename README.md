@@ -461,6 +461,25 @@ hiveserver2
 beeline -not-allowed jdbc:hive2://localhost:10000
 ```
 16. Por padrão, esse processo vai resultar em um erro no HIVE, para isso teremos que fazer alguns ajustes em alguns arquivos de acesso do beeline.
+17. Crie um arquivo em /home/hadoop/.beeline/
+```
+vim /home/hadoop/.beeline/beeline-hs2-connection.xml
+```
+18. Adicione e salve
+```
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+<property>
+  <name>beeline.hs2.connection.user</name>
+  <value>hive</value>
+</property>
+<property>
+  <name>beeline.hs2.connection.password</name>
+  <value>hive</value>
+</property>
+</configuration>
+```
 
 # ORDEM DE START
 ```
