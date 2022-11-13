@@ -452,6 +452,14 @@ hdfs dfs -chmod g+w /user/hive/warehouse
 ```
 schematool -dbType derby -initSchema
 ```
+14. Ligue o HiveServer2
+```
+hiveserver2
+```
+15. Execute o beeline
+```
+beeline -not-allowed jdbc:hive2://localhost:10000
+```
 
 # ORDEM DE START
 ```
