@@ -456,9 +456,10 @@ schematool -dbType derby -initSchema
 ```
 hiveserver2
 ```
-15. Execute o beeline
+15. Execute o hive
 ```
-beeline -not-allowed jdbc:hive2://localhost:10000
+#beeline -not-allowed jdbc:hive2://localhost:10000
+hive
 ```
 
 # ORDEM DE START
