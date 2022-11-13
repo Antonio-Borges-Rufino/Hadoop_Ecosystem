@@ -396,6 +396,62 @@ sudo systemctl disable mysqld
 ```
 sudo mysql
 ```
+# Passo 10 -> Instalar o Hive
+1. Baixar a versão estavel do Hive
+```
+wget https://dlcdn.apache.org/hive/hive-3.1.3/apache-hive-3.1.3-bin.tar.gz
+```
+2. Extrair o hive 
+```
+tar -xzvf apache-hive-3.1.3-bin.tar.gz
+```
+3. Mover ele para a pasta do hadoop_ecosystem
+```
+mv apache-hive-3.1.3-bin/ hadoop_ecosystem/
+```
+4. Renomear apenas para hive
+```
+mv hadoop_ecosystem/apache-hive-3.1.3-bin/ hadoop_ecosystem/hive/
+```
+5. Edite o arquivo .baschrc e adicione
+```
+export HIVE_HOME=/home/hadoop/hadoop_ecosystem/hive/
+export PATH=$PATH:$HIVE_HOME
+export PATH=$PATH:$JAVA_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$ZOOKEPER_HOME/bin:$KAFKA_HOME/bin:$SPARK_HOME/bin:$SPARK_HOME/sbin:$HIVE_HOME/bin
+```
+6. Atualize o arquivo
+```
+source .baschrc
+```
+7. Start o hadoop caso ele esteja desligado
+```
+start-dfs.sh
+```
+8. Start o yarn caso ele esteja desligado
+```
+start-yarn.sh
+```
+9. O hive precisa de algumas pastas dentro do HDFS para funcionar, vamos criar primeiro a pasta /tmp
+```
+hdfs dfs -mkdir /tmp
+```
+10. Configure as permissões da pasta /tmp
+```
+hdfs dfs -chmod g+w /tmp
+```
+11. Crie a pasta do usuario warehouse hive
+```
+hdfs dfs -mkdir /user/hive
+hdfs dfs -mkdir /user/hive/warehouse
+```
+12. Configure as permissões da pasta
+```
+hdfs dfs -chmod g+w /user/hive/warehouse
+```
+13. Inicie o Hive utilizando um bd base, no meu caso utilizei o derby
+```
+schematool -dbType derby -initSchema
+```
 
 # ORDEM DE START
 ```
