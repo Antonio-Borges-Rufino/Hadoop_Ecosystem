@@ -363,6 +363,40 @@ redis-cli
 ```
 9. Para sair do redis-server apert cntrl+c, e para sair do redis-cli use exit
 
+# Passo 9 -> Instalar o mysql
+1. Atualize o fluxo do centOS
+```
+sudo dnf upgrade --refresh -y
+```
+2. Instale o mysql
+```
+sudo dnf install mysql mysql-server -y
+```
+3. Ative o mysql
+```
+sudo systemctl enable mysqld --now
+```
+4. Desabilite a ativação do mysql ao ligar o sistema
+```
+sudo systemctl disable mysqld
+```
+5. Restart o mysql
+```
+sudo systemctl restart mysqld
+```
+6. Para ligar o mysql
+```
+sudo systemctl start mysqld
+```
+7. Para desligar o mysql
+```
+sudo systemctl disable mysqld
+```
+8. Com o mysql ligado, use para acessar
+```
+sudo mysql
+```
+
 # ORDEM DE START
 ```
 start-dfs.sh
@@ -378,4 +412,7 @@ kafka_start > /dev/null &
 ```
 ```
 redis-server > /dev/null & 
+```
+```
+sudo systemctl start mysqld
 ```
