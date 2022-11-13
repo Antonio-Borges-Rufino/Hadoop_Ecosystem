@@ -460,6 +460,7 @@ hiveserver2
 ```
 beeline -not-allowed jdbc:hive2://localhost:10000
 ```
+16. Por padrão, esse processo vai resultar em um erro no HIVE, para isso teremos que fazer alguns ajustes em alguns arquivos de acesso do beeline.
 
 # ORDEM DE START
 ```
