@@ -448,18 +448,32 @@ hdfs dfs -mkdir /user/hive/warehouse
 ```
 hdfs dfs -chmod g+w /user/hive/warehouse
 ```
-13. Inicie o Hive utilizando um bd base, no meu caso utilizei o derby
+13. Crie o arquivo /home/hadoop/hadoop_ecosystem/hive/conf/hive-site.xml
+```
+vim /home/hadoop/hadoop_ecosystem/hive/conf/hive-site.xml
+```
+14. Adicione a hive-site.xml
+```
+  <property>
+    <name>hive.server2.enable.doAs</name>
+    <value>false</value>
+    <description>
+      Setting this property to true will have HiveServer2 execute
+      Hive operations as the user making the calls to it.
+    </description>
+  </property>
+```
+15. Inicie o Hive utilizando um bd base, no meu caso utilizei o derby
 ```
 schematool -dbType derby -initSchema
 ```
-14. Ligue o HiveServer2
+16. Ligue o HiveServer2
 ```
 hiveserver2
 ```
-15. Execute o hive
+17. Se conecte com o beeline
 ```
-#beeline -not-allowed jdbc:hive2://localhost:10000
-hive
+beeline -u jdbc:hive2://localhost:10000
 ```
 
 # ORDEM DE START
@@ -480,4 +494,9 @@ redis-server > /dev/null &
 ```
 ```
 sudo systemctl start mysqld
+```
+-> Para se conectar ao Hive
+```
+hiveserver2
+beeline -u jdbc:hive2://localhost:10000
 ```
