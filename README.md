@@ -476,6 +476,37 @@ hiveserver2
 beeline -u jdbc:hive2://localhost:10000
 ```
 
+# Passo 11 -> Instalar o druid
+1. Baixar a versão mais estável do druid
+```
+wget https://dlcdn.apache.org/druid/24.0.0/apache-druid-24.0.0-bin.tar.gz
+```
+2. Descompactar o druid na pasta hadoop_ecosystem
+```
+tar -xzf apache-druid-24.0.0-bin.tar.gz -C hadoop_ecosystem/
+```
+3. Mudar o nome apenas para druid
+```
+mv /home/hadoop/hadoop_ecosystem/apache-druid-24.0.0/ /home/hadoop/hadoop_ecosystem/druid
+```
+4. Inserir no arquivo .bashrc
+```
+export DRUID_HOME=/home/hadoop/hadoop_ecosystem/druid/
+export PATH=$PATH:$DRUID_HOME
+export PATH=$PATH:$JAVA_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$ZOOKEPER_HOME/bin:$KAFKA_HOME/bin:$SPARK_HOME/bin:$SPARK_HOME/sbin:$HIVE_HOME/bin:$DRUID_HOME/bin
+```
+5. Atualizar o arquivo
+```
+source .bashrc
+```
+6. Para que o druid funcione com o zookeper já instalado, vá em /home/hadoop/hadoop_ecosystem/druid/conf/supervise/single-server/micro-quickstart.conf com vim e comente
+```
+#!p10 zk bin/run-zk conf
+```
+7. Agora e só ligar o servidor Druid e colocar a porta 8888 na conexão com ssh, algo como, -L 8002:localhost:8888
+```
+start-micro-quickstart
+```
 # ORDEM DE START
 ```
 start-dfs.sh
