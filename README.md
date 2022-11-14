@@ -531,3 +531,7 @@ sudo systemctl start mysqld
 hiveserver2
 beeline -u jdbc:hive2://localhost:10000
 ```
+-> Caso queira startar o druid (Por compatibilidade, o druid e o jupyter não podem startar ao mesmo tempo, caso seja necessário, mude a porta de funcionamento do jupyter)
+```
+start-micro-quickstart
+```
