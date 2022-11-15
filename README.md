@@ -512,7 +512,36 @@ start-micro-quickstart
 ```
 wget https://downloads.apache.org/nifi/1.18.0/nifi-1.18.0-bin.zip
 ```
-
+2. Extrair o nifi
+```
+unzip nifi-1.18.0-bin.zip
+```
+3. Mover para a pasta 
+```
+mv nifi-1.18.0 /home/hadoop/hadoop_ecosystem/nifi
+```
+5. Adicionar a .baschrc
+```
+export NIFI_HOME=/home/hadoop/hadoop_ecosystem/nifi/
+export PATH=$PATH:$NIFI_HOME
+export PATH=$PATH:$JAVA_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$ZOOKEPER_HOME/bin:$KAFKA_HOME/bin:$SPARK_HOME/bin:$SPARK_HOME/sbin:$HIVE_HOME/bin:$DRUID_HOME/bin:$NIFI_HOME/bin
+```
+```
+source .bashrc
+```
+6. Executar o NiFi
+```
+nifi.sh run
+```
+7. Pare o nife
+```
+nifi.sh stop
+```
+8. Crie credenciais
+```
+nifi.sh set-single-user-credentials hadoop 123456789101112
+```
+9. A porta de acesso para o nifi é 8443
 
 # ORDEM DE START
 ```
