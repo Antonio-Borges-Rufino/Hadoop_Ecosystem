@@ -4,7 +4,7 @@
 3. Cada passo vai ser feito de forma linear para facilitar a reprodção
 
 # Suporte atual do cluster
-![](https://github.com/Antonio-Borges-Rufino/Hadoop_Ecosystem/blob/main/heco_atu_3.jpg)
+![](https://github.com/Antonio-Borges-Rufino/Hadoop_Ecosystem/blob/main/heco_atu_4.jpg)
 
 # Passo 1 -> Criação do servidor
 1. O servidor base desse projeto vai ser um centOS-8 stream, que pode ser baixado [aqui](http://isoredirect.centos.org/centos/8-stream/isos/x86_64/)
@@ -574,4 +574,8 @@ beeline -u jdbc:hive2://localhost:10000
 -> Caso queira startar o druid (Por compatibilidade, o druid e o jupyter não podem startar ao mesmo tempo, caso seja necessário, mude a porta de funcionamento do jupyter)
 ```
 start-micro-quickstart
+```
+-> Caso queira startar o NiFi
+```
+nifi.sh run
 ```
