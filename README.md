@@ -507,6 +507,13 @@ source .bashrc
 ```
 start-micro-quickstart
 ```
+# Passo 12 -> Instalando o NiFi
+1. Baixe a versão estável do NiFi
+```
+wget https://downloads.apache.org/nifi/1.18.0/nifi-1.18.0-bin.zip
+```
+
+
 # ORDEM DE START
 ```
 start-dfs.sh
