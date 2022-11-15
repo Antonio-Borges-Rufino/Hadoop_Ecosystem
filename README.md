@@ -542,6 +542,10 @@ nifi.sh stop
 nifi.sh set-single-user-credentials hadoop 123456789101112
 ```
 9. A porta de acesso para o nifi é 8443
+10. Caso esteja usando o MobaXterm, precisa se conectar utilizando a mesma porta, para a validação do cabeçalho. Use algo como
+```
+ssh -L 8443:localhost:8443 hadoop@<ip_MV>
+```
 
 # ORDEM DE START
 ```
