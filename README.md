@@ -495,7 +495,7 @@ export PATH=$PATH:$JAVA_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$ZOOKEPER_HO
 ```
 source .bashrc
 ```
-6. Para que o druid funcione com o zookeper já instalado, vá em /home/hadoop/hadoop_ecosystem/druid/conf/supervise/single-server/micro-quickstart.conf com vim e comente
+6. Para que o druid funcione com o zookeper já instalado, vá em /home/hadoop/hadoop_ecosystem/druid/conf/supervise/single-server/micro-quickstart.conf e comente
 ```
 #!p10 zk bin/run-zk conf
 ```
