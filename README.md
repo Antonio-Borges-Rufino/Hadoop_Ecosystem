@@ -667,7 +667,8 @@ redis-server > /dev/null &
 ```
 5. Para acessar o jupyter
 ```
-source /home/hadoop/projetos/bin/activate & jupyter notebook --port 9789
+source /home/hadoop/projetos/bin/activate 
+jupyter notebook --port 9789
 ```
 6. Para se conectar ao Hive
 ```
