@@ -646,34 +646,39 @@ ssh -L 8443:localhost:8443 hadoop@<ip_MV>
 ```
 
 # ORDEM DE START
+1. Para ligar o hadoop
 ```
 start-dfs.sh
 ```
 ```
 start-yarn.sh
 ```
+2. Para ligar o zookeper
 ```
 zkServer.sh start
 ```
+3. Para ligar o kafka
 ```
 kafka_start > /dev/null & 
 ```
+4. Para ligar o redis
 ```
 redis-server > /dev/null & 
 ```
+5. Para acessar o jupyter
 ```
-sudo systemctl start mysqld
+source /home/hadoop/projetos/bin/activate & jupyter notebook --port 9789
 ```
--> Para se conectar ao Hive
+6. Para se conectar ao Hive
 ```
 hiveserver2
 beeline -u jdbc:hive2://localhost:10000
 ```
--> Caso queira startar o druid (Por compatibilidade, o druid e o jupyter não podem startar ao mesmo tempo, caso seja necessário, mude a porta de funcionamento do jupyter)
+7. Caso queira startar o druid (Por compatibilidade, o druid e o jupyter não podem startar ao mesmo tempo, caso seja necessário, mude a porta de funcionamento do jupyter como em 5.)
 ```
 start-micro-quickstart
 ```
--> Caso queira startar o NiFi
+8. Caso queira startar o NiFi
 ```
 nifi.sh run
 ```
