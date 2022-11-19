@@ -364,37 +364,131 @@ redis-cli
 9. Para sair do redis-server apert cntrl+c, e para sair do redis-cli use exit
 
 # Passo 9 -> Instalar o mysql
-1. Atualize o fluxo do centOS
+1. Da um update no gerenciador de pacotes dnf
 ```
-sudo dnf upgrade --refresh -y
+dnf update -y   
 ```
-2. Instale o mysql
+2. Baixar o mariadb, o servidor http e o php
 ```
-sudo dnf install mysql mysql-server -y
+dnf install httpd mariadb-server php php-cli php-json php-mbstring php-pdo php-pecl-zip php-mysqlnd -y
 ```
-3. Ative o mysql
+3. Startar o mariadb
 ```
-sudo systemctl enable mysqld --now
+systemctl start mariadb
 ```
-4. Desabilite a ativação do mysql ao ligar o sistema
+4. Permitir a execução do mariadb
 ```
-sudo systemctl disable mysqld
+systemctl enable mariadb
 ```
-5. Restart o mysql
+5. Acessar o mysql com permissão root
 ```
-sudo systemctl restart mysqld
+sudo mysql -u root
 ```
-6. Para ligar o mysql
+6. Setar uma senha para o usuario root do mysql
 ```
-sudo systemctl start mysqld
+SET PASSWORD FOR 'root'@'localhost' = PASSWORD('123456789');
 ```
-7. Para desligar o mysql
+7. Iniciar uma instalação segura e colocar a senha setada no passo 6.
 ```
-sudo systemctl disable mysqld
+sudo mysql_secure_installation
 ```
-8. Com o mysql ligado, use para acessar
+8. Colocar tudo y na instalação segura
+9. Entre na pasta de instalação do apache
 ```
-sudo mysql
+cd /var/www/html/
+```
+10. Baixe o phpmyadmin
+```
+sudo wget https://files.phpmyadmin.net/phpMyAdmin/5.2.0/phpMyAdmin-5.2.0-all-languages.zip
+```
+11. Extraia
+```
+sudo unzip phpMyAdmin-5.2.0-all-languages.zip
+```
+12. Renomeie
+```
+sudo mv phpMyAdmin-5.2.0-all-languages phpmyadmin
+```
+13. Edite para o usuario apache
+```
+sudo chown -R apache:apache /var/www/html/phpmyadmin
+```
+14. Renomeie e edite o arquivo de conf
+```
+sudo mv phpmyadmin/config.sample.inc.php phpmyadmin/config.inc.php
+```
+15. Abra com vim 
+```
+sudo vim phpmyadmin/config.inc.php
+```
+16. Adicione
+```
+cfg['blowfish_secret'] = '123456789';
+```
+17. Insira no mysql as tabelas do phpmyadmin
+```
+mysql < /var/www/html/phpmyadmin/sql/create_tables.sql -u root -p
+```
+18. Configure o apache para o phpmyadmin
+```
+sudo vim /etc/httpd/conf.d/phpmyadmin.conf
+```
+19. Adicione
+```
+Alias /phpmyadmin /var/www/html/phpmyadmin
+
+<Directory /var/www/html/phpmyadmin/>
+   AddDefaultCharset UTF-8
+
+   <IfModule mod_authz_core.c>
+     # Apache 2.4
+     <RequireAny>
+      Require all granted
+     </RequireAny>
+   </IfModule>
+   <IfModule !mod_authz_core.c>
+     # Apache 2.2
+     Order Deny,Allow
+     Deny from All
+     Allow from 127.0.0.1
+     Allow from ::1
+   </IfModule>
+</Directory>
+
+<Directory /var/www/html/phpmyadmin/setup/>
+   <IfModule mod_authz_core.c>
+     # Apache 2.4
+     <RequireAny>
+       Require all granted
+     </RequireAny>
+
+   </IfModule>
+
+   <IfModule !mod_authz_core.c>
+     # Apache 2.2
+     Order Deny,Allow
+     Deny from All
+     Allow from 127.0.0.1
+     Allow from ::1
+   </IfModule>
+
+</Directory>
+```
+20. Start o apache
+```
+systemctl start httpd
+```
+21. habilite o apache
+```
+systemctl enable httpd
+```
+22. Para entrar no phpmyadmin, entre com a porta do apache no ssh
+```
+ssh -L 4040:localhost:80 hadoop@<IP>
+```
+23. Acesse na máquina
+```
+localhosto:4040/phpmyadmin
 ```
 # Passo 10 -> Instalar o Hive
 1. Baixar a versão estavel do Hive
