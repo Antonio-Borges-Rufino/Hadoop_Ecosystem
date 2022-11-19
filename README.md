@@ -597,6 +597,14 @@ source .bashrc
 ```
 start-micro-quickstart
 ```
+OBS 1 -> CASO EXISTA ALGUM ERRO REFERENTE AO PERL, BASTA VOCE BAIXAR
+```
+sudo dnf install perl
+```
+OBS 2 -> CASO O ERRO EM RELAÇÃO AO ZOOKEPER EM FUNCIONAMENTO CONTINUE, USE.
+```
+export DRUID_SKIP_PORT_CHECK=1
+```
 # Passo 12 -> Instalando o NiFi
 1. Baixe a versão estável do NiFi
 ```
