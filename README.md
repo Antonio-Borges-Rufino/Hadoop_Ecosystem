@@ -678,8 +678,13 @@ beeline -u jdbc:hive2://localhost:10000
 7. Caso queira startar o druid (Por compatibilidade, o druid e o jupyter não podem startar ao mesmo tempo, caso seja necessário, mude a porta de funcionamento do jupyter como em 5.)
 ```
 start-micro-quickstart
+start_druid 
 ```
 8. Caso queira startar o NiFi
 ```
 nifi.sh run
+```
+9. Caso queira startar o jupyter a partir do alias: start_jupyter="source /home/hadoop/projetos/bin/activate && jupyter notebook --port 9789"
+```
+start_jupyter
 ```
