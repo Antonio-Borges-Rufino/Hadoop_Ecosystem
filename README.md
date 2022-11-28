@@ -644,6 +644,11 @@ nifi.sh set-single-user-credentials hadoop 123456789101112
 ```
 ssh -L 8443:localhost:8443 hadoop@<ip_MV>
 ```
+# Passo 13 -> Instalar Sqoop
+1. Baixar a versão mais estável do sqoop
+```
+wget https://archive.apache.org/dist/sqoop/1.4.7/sqoop-1.4.7.bin__hadoop-2.6.0.tar.gz
+```
 
 # ORDEM DE START
 1. Para ligar o hadoop
