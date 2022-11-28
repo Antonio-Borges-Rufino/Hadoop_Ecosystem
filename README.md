@@ -328,6 +328,11 @@ export PATH=$PATH:$JAVA_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$ZOOKEPER_HO
 ```
 source .baschrc
 ```
+7. Entre na pasta do spark e crie o diretorio conectores, ele é quem vai receber os conectores que vão ser implementados futuramente, como o jar de acesso ao mysql dentre outros.
+```
+mkdir hadoop_ecosystem/spark/Conectores
+```
+8. Vou por nessa pasta o conector do mysql que pode ser baixado [aqui](https://github.com/Antonio-Borges-Rufino/Hadoop_Ecosystem/blob/main/mysql-connector-java-8.0.30.jar)
 # Passo 8 -> Instalar o redis
 1. Baixar o redis
 ```
