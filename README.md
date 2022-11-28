@@ -649,6 +649,34 @@ ssh -L 8443:localhost:8443 hadoop@<ip_MV>
 ```
 wget https://archive.apache.org/dist/sqoop/1.4.7/sqoop-1.4.7.bin__hadoop-2.6.0.tar.gz
 ```
+2. Extrair para a pasta hadoop_ecosystem
+```
+tar -xzf sqoop-1.4.7.bin__hadoop-2.6.0.tar.gz -C hadoop_ecosystem/
+```
+3. Renomear o sqoop
+```
+mv /home/hadoop/hadoop_ecosystem/sqoop-1.4.7.bin__hadoop-2.6.0/ /home/hadoop/hadoop_ecosystem/sqoop
+```
+4. Adicione a .bashrc
+```
+export PATH=$PATH:$SQOOP_HOME
+export PATH=$PATH:$JAVA_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$ZOOKEPER_HOME/bin:$KAFKA_HOME/bin:$SPARK_HOME/bin:$SPARK_HOME/sbin:$HIVE_HOME/bin:$DRUID_HOME/bin:$NIFI_HOME/bin:$SQOOP_HOME/bin
+```
+5. Mova em sqoop/conf os arquivos de templates
+```
+cp /home/hadoop/hadoop_ecosystem/sqoop/conf/sqoop-env-template.sh /home/hadoop/hadoop_ecosystem/sqoop/conf/sqoop-env.sh
+```
+6. Abra o arquivo sqoop-env.sh com o vim
+```
+vim hadoop_ecosystem/sqoop/conf/sqoop-env.sh
+```
+7. Adicione
+```
+export HADOOP_COMMON_HOME=$HADOOP_COMMON_HOME
+export HADOOP_MAPRED_HOME=$HADOOP_MAPRED_HOME
+export HIVE_HOME=$HIVE_HOME
+```
+8. Por fim, adicione o mysql-conector ao sqoop/lib/. OBS: O mysql-conector e um arquivo.jar que possui diversas versões, e por questão de escolha e até mesmo de segurança, não vou posta-lo aqui, sinta-se a vontade de procurar na internet e baixar um de sua escolha.
 
 # ORDEM DE START
 1. Para ligar o hadoop
