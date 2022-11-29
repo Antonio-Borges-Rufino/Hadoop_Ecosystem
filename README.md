@@ -509,65 +509,90 @@ tar -xzvf apache-hive-3.1.3-bin.tar.gz -C hadoop_ecosystem/
 ```
 mv hadoop_ecosystem/apache-hive-3.1.3-bin/ hadoop_ecosystem/hive/
 ```
-4. Edite o arquivo .baschrc e adicione
+4. Insira o jar de conexão do mysql na pasta /home/hadoop/hadoop_ecosystem/hive/lib/
+5. Edite o arquivo .baschrc e adicione
 ```
 export HIVE_HOME=/home/hadoop/hadoop_ecosystem/hive/
 export PATH=$PATH:$HIVE_HOME
 export PATH=$PATH:$JAVA_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$ZOOKEPER_HOME/bin:$KAFKA_HOME/bin:$SPARK_HOME/bin:$SPARK_HOME/sbin:$HIVE_HOME/bin
 ```
-5. Atualize o arquivo
+6. Atualize o arquivo
 ```
 source .baschrc
 ```
-6. Start o hadoop caso ele esteja desligado
+7. Start o hadoop caso ele esteja desligado
 ```
 start-dfs.sh
 ```
-7. Start o yarn caso ele esteja desligado
+8. Start o yarn caso ele esteja desligado
 ```
 start-yarn.sh
 ```
-8. O hive precisa de algumas pastas dentro do HDFS para funcionar, vamos criar primeiro a pasta /tmp
+9. O hive precisa de algumas pastas dentro do HDFS para funcionar, vamos criar primeiro a pasta /tmp
 ```
 hdfs dfs -mkdir /tmp
 ```
-9. Configure as permissões da pasta /tmp
+10. Configure as permissões da pasta /tmp
 ```
 hdfs dfs -chmod g+w /tmp
 ```
-10. Crie a pasta do usuario warehouse hive
+11. Crie a pasta do usuario warehouse hive
 ```
 hdfs dfs -mkdir /user/hive
 hdfs dfs -mkdir /user/hive/warehouse
 ```
-11. Configure as permissões da pasta
+12. Configure as permissões da pasta
 ```
 hdfs dfs -chmod g+w /user/hive/warehouse
 ```
-12. Crie o arquivo /home/hadoop/hadoop_ecosystem/hive/conf/hive-site.xml
+13. Crie o arquivo /home/hadoop/hadoop_ecosystem/hive/conf/hive-site.xml
 ```
 vim /home/hadoop/hadoop_ecosystem/hive/conf/hive-site.xml
 ```
-13. Adicione a hive-site.xml
+14. Adicione a hive-site.xml
 ```
-  <property>
-    <name>hive.server2.enable.doAs</name>
-    <value>false</value>
-    <description>
-      Setting this property to true will have HiveServer2 execute
-      Hive operations as the user making the calls to it.
-    </description>
-  </property>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+   <property>
+      <name>javax.jdo.option.ConnectionURL</name>
+      <value>jdbc:mysql://localhost:3306/metastore?createDatabaseIfNotExist=true</value>
+   </property>
+   <property>
+      <name>javax.jdo.option.ConnectionDriverName</name>
+      <value>com.mysql.jdbc.Driver</value>
+   </property>
+   <property>
+      <name>javax.jdo.option.ConnectionUserName</name>
+      <value>root</value>
+   </property>
+   <property>
+      <name>javax.jdo.option.ConnectionPassword</name>
+      <value>123456789</value>
+   </property>
+   <property>
+      <name>hive.metastore.warehouse.dir</name>
+      <value>/user/hive/warehouse</value>
+   </property>
+   <property>
+      <name>hive.cli.print.header</name>
+      <value>true</value>
+   </property>
+</configuration>
 ```
-14. Inicie o Hive utilizando um bd base, no meu caso utilizei o derby
+15. Inicie o Hive utilizando um bd base, no meu caso utilizei o mysql
 ```
-schematool -dbType derby -initSchema
+schematool -dbType mysql -initSchema --verbose
 ```
-15. Ligue o HiveServer2
+16. Ative a metastore
+```
+hive --service metastore 
+```
+17. Ligue o HiveServer2
 ```
 hiveserver2
 ```
-16. Se conecte com o beeline
+18. Se conecte com o beeline
 ```
 beeline -u jdbc:hive2://localhost:10000
 ```
@@ -678,6 +703,7 @@ jupyter notebook --port 9789
 ```
 6. Para se conectar ao Hive
 ```
+hive --service metastore 
 hiveserver2
 beeline -u jdbc:hive2://localhost:10000
 ```
