@@ -596,6 +596,10 @@ hiveserver2
 ```
 beeline -u jdbc:hive2://localhost:10000
 ```
+19 Integrando o hive ao spark
+```
+cp hadoop_ecosystem/hive/conf/hive-site.xml hadoop_ecosystem/spark/conf/
+```
 
 # Passo 11 -> Instalar o druid
 1. Baixar a versão mais estável do druid
